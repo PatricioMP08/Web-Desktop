@@ -504,16 +504,18 @@ function renderWallpaperOptions() {
 
 function setWallpaper(url) {
     document.body.style.backgroundImage = `url(${url})`;
-    localStorage.setItem('wallpaper', url);
+    localStorage.setItem(`wallpaper_${user}`, url); // guardar por usuario
     closeWallpaperSelector();
 }
 
+
 function loadSavedWallpaper() {
-    const saved = localStorage.getItem('wallpaper');
+    const saved = localStorage.getItem(`wallpaper_${user}`);
     if (saved) {
         document.body.style.backgroundImage = `url(${saved})`;
     }
 }
+
 
 window.onload = loadSavedWallpaper;
 function handleCustomWallpaperUpload(event) {
